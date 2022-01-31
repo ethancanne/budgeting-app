@@ -1,15 +1,11 @@
 {
-  "name": "Budgeting-",
+  "name": "Budgeting-App",
   "version": "1.0.0",
   "description": "",
-  "main": "./server/Server.js",
   "scripts": {
     "build": "webpack --mode production",
-    "debug": "node inspect Server/Server.js",
-    "dev": "webpack server --mode development",
-    "doc": "jsdoc -c jsdoc.config.json",
-    "format": "prettier --write . --loglevel silent",
-    "start": "node Server/Server.js"
+    "start": "node server.js",
+    "dev": "npm rebuild node-sass && webpack server --mode development"
   },
   "dependencies": {
     "react": "^17.0.2",

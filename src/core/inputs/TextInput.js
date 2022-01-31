@@ -1,4 +1,5 @@
 import React from "react";
+import '../core.scss'
 
 /**
  * Renders a text input.

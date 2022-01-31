@@ -1,0 +1,41 @@
+{
+  "name": "Budgeting-",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./server/Server.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "debug": "node inspect Server/Server.js",
+    "dev": "webpack server --mode development",
+    "doc": "jsdoc -c jsdoc.config.json",
+    "format": "prettier --write . --loglevel silent",
+    "start": "node Server/Server.js"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.6",
+    "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
+    "regenerator-runtime": "^0.13.9"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@babel/preset-react": "^7.16.0",
+    "babel-loader": "^8.2.3",
+    "concurrently": "^6.4.0",
+    "css-loader": "^6.5.1",
+    "html-webpack-plugin": "^5.5.0",
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.15",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.5.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

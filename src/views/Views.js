@@ -3,6 +3,10 @@
  * @author  Ethan Cannelongo
  * @date   01/30/2022
  */
-const Views = {};
+const views = {
+  Popup: {
+    CREATE_TRANSACTION: "Create Transaction",
+  },
+};
 
-export default Views;
+export default views;

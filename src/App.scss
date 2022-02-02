@@ -1,8 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
   overflow-x: hidden;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Vollkorn", serif;
 }
 html {
   height: 100%;
@@ -13,7 +15,14 @@ html {
       height: 100%;
       .container {
         height: 100%;
+
         overflow: hidden;
+        transition: all 0.7s;
+        transform: scale(100%);
+        z-index: 10;
+        &.popup-is-showing {
+          transform: scale(90%);
+        }
       }
     }
   }

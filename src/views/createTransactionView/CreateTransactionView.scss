@@ -1,0 +1,9 @@
+.create-transaction-view {
+  display: block;
+  flex: 1;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+}

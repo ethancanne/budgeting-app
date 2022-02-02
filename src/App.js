@@ -13,7 +13,7 @@ import Dashboard from "./pages/dashboard/Dashboard";
 const App = props => {
   return (
     <div className='container'>
-      <h1>Hey Hunter and Conor!</h1>
+      <Dashboard income={600} expense={500} />
     </div>
   );
 };

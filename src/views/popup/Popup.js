@@ -2,12 +2,17 @@ import "./Popup.scss";
 import React from "react";
 import views from "../Views";
 import CreateTransactionView from "../createTransactionView/CreateTransactionView";
+import ReportView from "../reportView/ReportView";
 
 const Popup = props => {
   var popupView = <></>;
   switch (props.view) {
     case views.Popup.CREATE_TRANSACTION:
       popupView = <CreateTransactionView setPopup={props.setPopup} />;
+      break;
+
+    case views.Popup.GENERATE_REPORT:
+      popupView = <ReportView setPopup={props.setPopup} />;
       break;
   }
   return (

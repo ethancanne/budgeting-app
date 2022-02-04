@@ -1,10 +1,10 @@
-Transaction;
-const date;
-const amount;
-const name;
-const desc;
-const category;
-const isExpense;
+// Transaction;
+// const date;
+// const amount;
+// const name;
+// const desc;
+// const category;
+// const isExpense;
 
 class Transaction {
   constructor(name, date, amount, category, isExpense) {
@@ -15,3 +15,5 @@ class Transaction {
     this.isExpense = isExpense;
   }
 }
+
+export default Transaction;

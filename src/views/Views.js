@@ -6,6 +6,7 @@
 const views = {
   Popup: {
     CREATE_TRANSACTION: "Create Transaction",
+    GENERATE_REPORT: "Generate Report",
   },
 };
 

@@ -9,8 +9,10 @@ const Dashboard = props => {
   return (
     <Page>
       <div className='dashboard-page'>
-        <MoneyView money={props.income} label='Income' />
-        <MoneyView money={props.expense} label='Expense' />
+        <div className='moneydiv'>
+          <MoneyView money={props.income} label='Income' />
+          <MoneyView money={props.expense} label='Expense' />
+        </div>
         <Button
           onClick={() => props.setPopup(true, views.Popup.CREATE_TRANSACTION)}>
           Create Transaction

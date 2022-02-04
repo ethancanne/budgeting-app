@@ -9,6 +9,9 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Popup from "./views/popup/Popup";
 import views from "./views/Views";
 
+//Import Models
+import User from "./models/User";
+
 /**
  * This is the root presentational component that processes all the pages.
  * @author Ethan Cannelongo
@@ -17,7 +20,8 @@ import views from "./views/Views";
 const App = props => {
   const [isPopupShowing, setIsPopupShowing] = useState(false);
   const [popupView, setPopupView] = useState(views.Popup.CREATE_TRANSACTION);
-  const [user, setUser] = useState();
+  const userStart = new User([], 0, 0);
+  const [user, setUser] = useState(userStart);
 
   const setPopup = (isShowing, view) => {
     setIsPopupShowing(isShowing);
@@ -25,7 +29,13 @@ const App = props => {
   };
 
   useEffect(() => {
-    setUser(localStorage.getItem("user"));
+    if (localStorage.getItem("user")) {
+      setUser(localStorage.getItem("user"));
+    } else {
+      // console.log("running");
+      // setUser(user);
+      // localStorage.setItem("user", user);
+    }
   }, []);
 
   window.addEventListener("storage", () => {

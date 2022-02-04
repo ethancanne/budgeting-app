@@ -7,7 +7,7 @@
 // generateReport;
 
 class User {
-  constructor(username, transactions) {
+  constructor(transactions, totalIncome, totalExpense) {
     this.transactions = transactions;
     this.totalIncome = totalIncome;
     this.totalExpense = totalExpense;
@@ -40,3 +40,5 @@ class User {
 
   generateReport(dateStart, dateEnd) {}
 }
+
+export default User;

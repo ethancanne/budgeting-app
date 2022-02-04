@@ -29,3 +29,5 @@ class Transaction {
     this.isExpense = isExpense;
   }
 }
+
+export default Transaction;

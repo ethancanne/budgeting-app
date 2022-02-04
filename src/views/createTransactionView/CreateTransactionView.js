@@ -1,17 +1,19 @@
 import "./CreateTransactionView.scss";
 import React, { useState } from "react";
 import Button from "../../core/button/Button";
+import Transaction from "../../models/Transaction";
+import User from "../../models/User";
 
 const CreateTransactionView = props => {
-  const [name, setName] = useState('Name');
-  const [date, setDate] = useState(0);
-  const [amount, setAmount] = useState(0);
-  const [category, setCategory] = useState('Other');
-  const [isExpense, setIsExpense] = useState(0);
+  const [name, setName] = useState("");
+  const [date, setDate] = useState();
+  const [amount, setAmount] = useState();
+  const [category, setCategory] = useState("");
+  const [isExpense, setIsExpense] = useState(false);
 
   const updateName = e => {
     setName(e.target.value);
-  }
+  };
 
   const updateDate = e => {
     setDate(e.target.value);
@@ -26,7 +28,7 @@ const CreateTransactionView = props => {
   };
 
   const updateIsExpense = e => {
-    setIsExpense(e.target.value);
+    setIsExpense(e.target.value !== "false");
   };
 
   //Save the transaction to local storage on form submit
@@ -35,27 +37,53 @@ const CreateTransactionView = props => {
     e.preventDefault();
     e.stopPropagation();
     //Create transaction object with state properties
-    const newTransaction = new Transaction(name, date, amount, category, isExpense);
+    const newTransaction = new Transaction(
+      name,
+      date,
+      amount,
+      category,
+      isExpense
+    );
     //Store the transaction object in local storage
-    App.user.transactions.push(newTransaction);
+    const user = User.createFromObject(
+      JSON.parse(localStorage.getItem("user"))
+    );
+    user.addTransaction(newTransaction);
+    localStorage.setItem("user", JSON.stringify(user));
+    window.dispatchEvent(new Event("storage"));
+
     //Close the popup
     props.setPopup(false);
   };
+
   return (
     <div className='create-transaction-view'>
       <form onSubmit={handleCreateTransaction}>
-        <label>Name
-          <input type='text' value={name} onChange={updateName} />
+        <label>
+          <p>Name</p>
+          <input
+            type='text'
+            value={name}
+            onChange={updateName}
+            placeholder='Transaction Name'
+          />
         </label>
-        <label>Date
+        <label>
+          <p>Date</p>
           <input type='date' value={date} onChange={updateDate} />
         </label>
-        <label>Amount
-          <input type='text' value={amount} onChange={updateAmount}
-          pattern="(0\.((0[1-9]{1})|([1-9]{1}([0-9]{1})?)))|(([1-9]+[0-9]*)(\.([0-9]{1,2}))?)"/>
+        <label>
+          <p>Amount</p>
+          <input
+            type='text'
+            value={amount}
+            onChange={updateAmount}
+            pattern='(0\.((0[1-9]{1})|([1-9]{1}([0-9]{1})?)))|(([1-9]+[0-9]*)(\.([0-9]{1,2}))?)'
+          />
         </label>
-        <label>Category
-          <select value={isExpense} onChange={updateCategory}>
+        <label>
+          <p>Category</p>
+          <select value={category} onChange={updateCategory}>
             <option value='Paycheck'>Paycheck</option>
             <option value='Interest'>Interest</option>
             <option value='Bills & Utilities'>Bills & Utilities</option>
@@ -69,7 +97,8 @@ const CreateTransactionView = props => {
             <option value='Other'>Other</option>
           </select>
         </label>
-        <label>Income or Expense
+        <label>
+          <p>Income or Expense</p>
           <select onChange={updateIsExpense}>
             <option value='false'>Income</option>
             <option value='true'>Expense</option>

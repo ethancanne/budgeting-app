@@ -1,9 +1,37 @@
 .create-transaction-view {
   display: block;
   flex: 1;
+  padding: 20px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow: hidden;
 
   form {
     display: flex;
     flex-direction: column;
+    width: 70%;
+    label {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      input {
+        padding: 15px;
+        width: 100%;
+        border: none;
+        background-color: whitesmoke;
+      }
+      select {
+        padding: 15px;
+        width: 100%;
+        border: none;
+        background-color: whitesmoke;
+      }
+    }
   }
 }

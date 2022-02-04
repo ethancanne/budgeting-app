@@ -20,27 +20,28 @@ import User from "./models/User";
 const App = props => {
   const [isPopupShowing, setIsPopupShowing] = useState(false);
   const [popupView, setPopupView] = useState(views.Popup.CREATE_TRANSACTION);
-  const userStart = new User([], 0, 0);
-  const [user, setUser] = useState(userStart);
+  const [user, setUser] = useState({});
 
   const setPopup = (isShowing, view) => {
     setIsPopupShowing(isShowing);
     if (view) setPopupView(view);
   };
 
-  useEffect(() => {
+  const resetUserFromLocalStorage = () => {
     if (localStorage.getItem("user")) {
-      setUser(localStorage.getItem("user"));
-    } else {
-      // console.log("running");
-      // setUser(user);
-      // localStorage.setItem("user", user);
+      setUser(User.createFromObject(JSON.parse(localStorage.getItem("user"))));
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("storage", resetUserFromLocalStorage, false);
+    resetUserFromLocalStorage();
+    if (!localStorage.getItem("user")) {
+      const newUser = new User([], 0, 0);
+      setUser(newUser);
+      localStorage.setItem("user", JSON.stringify(newUser));
     }
   }, []);
-
-  window.addEventListener("storage", () => {
-    setUser(localStorage.getItem("user"));
-  });
 
   //Retrieve data from local storage and store in global state
   const retrieveData = () => {};

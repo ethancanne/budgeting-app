@@ -23,9 +23,9 @@
   transition: 0.7s all;
 
   background-color: white;
+  overflow: hidden;
 
   .popup-top {
-    display: flex;
     width: 100%;
     height: 3em;
     background-color: white;

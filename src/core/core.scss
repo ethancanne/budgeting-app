@@ -1,10 +1,11 @@
 .button {
-  background-color: rgb(181, 181, 181);
-  color: white;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 5px 10px;
-  padding: 20px;
-  border: none;
+  background-color: rgb(255, 255, 255);
+  border: rgb(230, 230, 230) solid 1px;
+  color: rgb(0, 0, 0);
+  padding: 14px;
   border-radius: 4px;
   font-weight: 900;
+  box-shadow: rgba(0, 0, 0, 0.068) 0px 5px 10px;
+
   cursor: pointer;
 }

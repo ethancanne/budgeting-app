@@ -104,8 +104,9 @@ const CreateTransactionView = props => {
             <option value='true'>Expense</option>
           </select>
         </label>
-
-        <Button>Click</Button>
+        <div className='buttonWrapper'>
+          <Button>Click</Button>
+        </div>
       </form>
     </div>
   );

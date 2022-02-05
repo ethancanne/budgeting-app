@@ -1,5 +1,6 @@
 import "./Dashboard.scss";
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "../../core/button/Button";
 import Page from "../Page";
 import views from "../../views/Views";
@@ -13,10 +14,17 @@ const Dashboard = props => {
           <MoneyView money={props.income} label='Income' />
           <MoneyView money={props.expense} label='Expense' />
         </div>
-        <Button
-          onClick={() => props.setPopup(true, views.Popup.CREATE_TRANSACTION)}>
-          Create Transaction
-        </Button>
+        <div className='buttons'>
+          <Button
+            onClick={() =>
+              props.setPopup(true, views.Popup.CREATE_TRANSACTION)
+            }>
+            Create Transaction
+          </Button>
+          <Link to='/report'>
+            <Button>Generate Report</Button>
+          </Link>
+        </div>
       </div>
     </Page>
   );

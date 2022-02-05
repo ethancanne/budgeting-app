@@ -3,8 +3,14 @@
   flex-direction: column;
   align-items: center;
   height: 100%;
-}
+  .moneydiv {
+    display: flex;
+  }
 
-.moneydiv {
-  display: flex;
+  .buttons {
+    display: flex;
+    button {
+      margin: 20px;
+    }
+  }
 }

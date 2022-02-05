@@ -1,6 +1,7 @@
 import "./App.scss";
 import React, { useState, useEffect } from "react";
 import "regenerator-runtime/runtime.js";
+import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
 //Import Pages
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -11,6 +12,7 @@ import views from "./views/Views";
 
 //Import Models
 import User from "./models/User";
+import Report from "./pages/report/Report";
 
 /**
  * This is the root presentational component that processes all the pages.
@@ -46,16 +48,29 @@ const App = props => {
   //Retrieve data from local storage and store in global state
   const retrieveData = () => {};
   return (
-    <div className='app'>
-      <Popup isShowing={isPopupShowing} view={popupView} setPopup={setPopup} />
-      <div className={`container ${isPopupShowing && "popup-is-showing"}`}>
-        <Dashboard
-          income={user.totalIncome}
-          expense={user.totalExpense}
+    <Router>
+      <div className='app'>
+        <Popup
+          isShowing={isPopupShowing}
+          view={popupView}
           setPopup={setPopup}
         />
+        <div className={`container ${isPopupShowing && "popup-is-showing"}`}>
+          <Switch>
+            <Route exact path='/'>
+              <Dashboard
+                income={user.totalIncome}
+                expense={user.totalExpense}
+                setPopup={setPopup}
+              />
+            </Route>
+            <Route exact path='/report'>
+              <Report />
+            </Route>
+          </Switch>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 

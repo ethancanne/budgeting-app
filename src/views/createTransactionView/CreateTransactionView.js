@@ -8,7 +8,7 @@ const CreateTransactionView = props => {
   const [name, setName] = useState("");
   const [date, setDate] = useState();
   const [amount, setAmount] = useState();
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Paycheck");
   const [isExpense, setIsExpense] = useState(false);
 
   const updateName = e => {
@@ -66,11 +66,17 @@ const CreateTransactionView = props => {
             value={name}
             onChange={updateName}
             placeholder='Transaction Name'
+            required
           />
         </label>
         <label>
           <p>Date</p>
-          <input type='date' value={date} onChange={updateDate} />
+          <input
+            type='date'
+            value={date}
+            onChange={updateDate}
+            required
+          />
         </label>
         <label>
           <p>Amount</p>
@@ -79,6 +85,7 @@ const CreateTransactionView = props => {
             value={amount}
             onChange={updateAmount}
             pattern='(0\.((0[1-9]{1})|([1-9]{1}([0-9]{1})?)))|(([1-9]+[0-9]*)(\.([0-9]{1,2}))?)'
+            required
           />
         </label>
         <label>

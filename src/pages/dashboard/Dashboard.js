@@ -5,6 +5,7 @@ import Button from "../../core/button/Button";
 import Page from "../Page";
 import views from "../../views/Views";
 import MoneyView from "../../views/moneyView/MoneyView";
+import TransactionHistoryView from "../../views/transactionHistoryView/TransactionHistoryView";
 
 const Dashboard = props => {
   return (
@@ -13,6 +14,9 @@ const Dashboard = props => {
         <div className='moneydiv'>
           <MoneyView money={props.income} label='Income' />
           <MoneyView money={props.expense} label='Expense' />
+        </div>
+        <div className='transactionhistorydiv'>
+          <TransactionHistoryView />
         </div>
         <div className='buttons'>
           <Button

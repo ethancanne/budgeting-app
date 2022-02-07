@@ -28,6 +28,9 @@ html {
           &.popup-is-showing {
             transform: scale(95%);
           }
+          .page {
+            overflow-y: hidden;
+          }
         }
       }
     }

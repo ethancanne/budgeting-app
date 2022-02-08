@@ -1,6 +1,7 @@
 // Transaction;
 class Transaction {
-  constructor(name, date, amount, category, isExpense) {
+  constructor(UID, name, date, amount, category, isExpense) {
+    this.UID = UID;
     this.name = name;
     this.date = new Date(date);
     this.amount = parseInt(amount);
@@ -10,12 +11,17 @@ class Transaction {
 
   static createFromObject(transactionObj) {
     return new Transaction(
+      transactionObj.UID,
       transactionObj.name,
       transactionObj.date,
       transactionObj.amount,
       transactionObj.category,
       transactionObj.isExpense
     );
+  }
+
+  setUID(UID) {
+    this.UID = UID;
   }
 
   toJSON() {
@@ -25,6 +31,7 @@ class Transaction {
       amount: this.amount,
       category: this.category,
       isExpense: this.isExpense,
+      UID: this.UID,
     };
   }
 }

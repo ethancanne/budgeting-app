@@ -1,18 +1,21 @@
 // Transaction;
-// const date;
-// const amount;
-// const name;
-// const desc;
-// const category;
-// const isExpense;
-
 class Transaction {
   constructor(name, date, amount, category, isExpense) {
     this.name = name;
-    this.date = date;
+    this.date = new Date(date);
     this.amount = parseInt(amount);
     this.category = category;
     this.isExpense = isExpense;
+  }
+
+  static createFromObject(transactionObj) {
+    return new Transaction(
+      transactionObj.name,
+      transactionObj.date,
+      transactionObj.amount,
+      transactionObj.category,
+      transactionObj.isExpense
+    );
   }
 
   toJSON() {

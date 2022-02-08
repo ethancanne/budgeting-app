@@ -5,6 +5,7 @@
 // const username;
 
 // generateReport;
+import Transaction from "./Transaction";
 
 class User {
   constructor(transactions, totalIncome, totalExpense) {
@@ -14,8 +15,12 @@ class User {
   }
 
   static createFromObject(userObj) {
+    const newTransactionList = [];
+    userObj.transactions.forEach(transaction => {
+      newTransactionList.push(Transaction.createFromObject(transaction));
+    });
     return new User(
-      userObj.transactions,
+      newTransactionList,
       parseInt(userObj.totalIncome),
       parseInt(userObj.totalExpense)
     );

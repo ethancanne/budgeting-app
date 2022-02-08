@@ -71,12 +71,7 @@ const CreateTransactionView = props => {
         </label>
         <label>
           <p>Date</p>
-          <input
-            type='date'
-            value={date}
-            onChange={updateDate}
-            required
-          />
+          <input type='date' value={date} onChange={updateDate} required />
         </label>
         <label>
           <p>Amount</p>
@@ -84,7 +79,8 @@ const CreateTransactionView = props => {
             type='text'
             value={amount}
             onChange={updateAmount}
-            pattern='(0\.((0[1-9]{1})|([1-9]{1}([0-9]{1})?)))|(([1-9]+[0-9]*)(\.([0-9]{1,2}))?)'
+            min='0.01'
+            step='0.01'
             required
           />
         </label>

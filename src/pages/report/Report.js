@@ -7,7 +7,7 @@ const Report = () => {
   return (
     <Page>
       <div className='report-container'>
-        <ReportView />
+        <ReportView monthRange={[0, 4]} year={2022} />
       </div>
       <div className='button-container'></div>
     </Page>

@@ -7,12 +7,17 @@
 // const isExpense;
 
 class Transaction {
-  constructor(name, date, amount, category, isExpense) {
+  constructor(UID, name, date, amount, category, isExpense) {
+    this.UID = UID;
     this.name = name;
     this.date = date;
     this.amount = parseInt(amount);
     this.category = category;
     this.isExpense = isExpense;
+  }
+
+  setUID(UID) {
+    this.UID = UID;
   }
 
   toJSON() {
@@ -22,6 +27,7 @@ class Transaction {
       amount: this.amount,
       category: this.category,
       isExpense: this.isExpense,
+      UID: this.UID,
     };
   }
 }

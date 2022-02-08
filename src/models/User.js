@@ -20,6 +20,12 @@ class User {
       parseInt(userObj.totalExpense)
     );
   }
+
+  getNewUID() {
+    if(this.transactions.length > 0) return Math.max.apply(Math, this.transactions.map(function(t) { return t.UID; })) + 1;
+    else return 0;
+  }
+
   addTransaction(transaction) {
     // Add transaction to total amount of money user has
     if (transaction.isExpense) this.totalExpense += transaction.amount;
@@ -27,9 +33,9 @@ class User {
     this.transactions.push(transaction);
   }
 
-  removeTransaction(transactionName) {
+  removeTransaction(UID) {
     for (let i = this.transactions.length; i >= 0; --i) {
-      if (this.transactions[i].name == transactionName) {
+      if (this.transactions[i].UID == UID) {
         this.transactions.splice(i, 1);
         return 0;
       }

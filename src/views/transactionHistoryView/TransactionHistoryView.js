@@ -1,19 +1,25 @@
 import "./TransactionHistoryView.scss";
 import React, { useState } from "react";
 import User from "../../models/User";
+import Button from "../../core/button/Button";
 
 const TransactionHistoryView = props => {
-  var transactions = [];
+  var user;
   if (localStorage.getItem("user")) {
-    transactions = User.createFromObject(
+    user = User.createFromObject(
       JSON.parse(localStorage.getItem("user"))
-    ).transactions;
+    );
+  }
+
+  function handleDelete(UID) {
+    user.removeTransaction(UID);
   }
 
   return (
     <div className='transaction-history-view'>
       <table>
         <tr>
+          <th>UID (For Debugging Only)</th>
           <th>Name</th>
           <th>Date</th>
           <th>Amount</th>
@@ -22,14 +28,19 @@ const TransactionHistoryView = props => {
           <th>Delete</th>
         </tr>
 
-        {transactions.map(transaction => (
+        {user.transactions.map(transaction => (
           <tr>
+            <td>{transaction.UID}</td>
             <td>{transaction.name}</td>
             <td>{transaction.date}</td>
             <td>${transaction.amount}</td>
             <td>{transaction.category}</td>
             <td>{transaction.isExpense ? "Expense" : "Income"}</td>
-            <td>Delete</td>
+            <td>
+              <Button
+                onClick={() => handleDelete(transaction.UID)}
+              >Delete</Button>
+            </td>
           </tr>
         ))}
       </table>

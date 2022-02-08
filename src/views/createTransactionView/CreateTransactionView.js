@@ -36,8 +36,15 @@ const CreateTransactionView = props => {
     //Stop default form funcitonality
     e.preventDefault();
     e.stopPropagation();
+
+    //Get user object from storage
+    const user = User.createFromObject(
+      JSON.parse(localStorage.getItem("user"))
+    );
+
     //Create transaction object with state properties
     const newTransaction = new Transaction(
+      user.getNewUID(),
       name,
       date,
       amount,
@@ -45,9 +52,6 @@ const CreateTransactionView = props => {
       isExpense
     );
     //Store the transaction object in local storage
-    const user = User.createFromObject(
-      JSON.parse(localStorage.getItem("user"))
-    );
     user.addTransaction(newTransaction);
     localStorage.setItem("user", JSON.stringify(user));
     window.dispatchEvent(new Event("storage"));

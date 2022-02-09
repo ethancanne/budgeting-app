@@ -55,8 +55,6 @@ class User {
     }
   }
 
-  generateReport(dateStart, dateEnd) {}
-
   toJSON() {
     return {
       transactions: this.transactions,

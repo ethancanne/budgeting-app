@@ -1,6 +1,7 @@
 import "./ReportView.scss";
 import User from "../../models/User";
 import React, { useEffect, useState } from "react";
+import Button from "../../core/button/Button";
 import Transaction from "../../models/Transaction";
 import {
   BarChart,
@@ -73,6 +74,7 @@ const ReportView = ({ dateRange }) => {
           <Bar dataKey='expense' fill='#82ca9d' />
         </BarChart>
       </ResponsiveContainer>
+      <Button onClick={() => history.back()}>Back</Button>
     </div>
   );
 };

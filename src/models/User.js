@@ -65,7 +65,7 @@ class User {
     for (let i = 0; i < this.transactions.length; i++) {
       if (this.transactions[i].isExpense)
         this.totalExpense += this.transactions[i].amount;
-      this.totalIncome += this.transactions[i].amount;
+      else this.totalIncome += this.transactions[i].amount;
     }
   }
 

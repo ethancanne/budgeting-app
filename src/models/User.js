@@ -1,10 +1,4 @@
 // User;
-// transactions;
-// totalIncome;
-// totalExpense;
-// const username;
-
-// generateReport;
 import Transaction from "./Transaction";
 
 class User {
@@ -57,7 +51,7 @@ class User {
     for (let i = 0; i < this.transactions.length; i++) {
       if (this.transactions[i].isExpense)
         this.totalExpense += this.transactions[i].amount;
-      this.totalIncome += this.transactions[i].amount;
+      else this.totalIncome += this.transactions[i].amount;
     }
   }
 

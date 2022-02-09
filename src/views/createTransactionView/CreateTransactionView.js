@@ -20,7 +20,8 @@ const CreateTransactionView = props => {
   };
 
   const updateAmount = e => {
-    setAmount(e.target.value);
+    let sanitizedAmount = e.target.value.replace(/[^0-9.]/g,'');
+    setAmount(sanitizedAmount);
   };
 
   const updateCategory = e => {

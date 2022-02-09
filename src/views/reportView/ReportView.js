@@ -13,12 +13,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const ReportView = ({ monthRange, year }) => {
+const ReportView = ({ dateRange }) => {
   const transactions = User.createFromObject(
     JSON.parse(localStorage.getItem("user"))
   ).transactions;
 
-  var maxValue = 0;
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -27,9 +26,8 @@ const ReportView = ({ monthRange, year }) => {
 
     transactions.forEach(transaction => {
       if (
-        transaction.date.getFullYear() === year &&
-        transaction.date.getMonth() >= monthRange[0] &&
-        transaction.date.getMonth() <= monthRange[1]
+        transaction.date >= dateRange[0] &&
+        transaction.date <= dateRange[1]
       ) {
         var categoryIndex = theData.findIndex(
           category => category.category === transaction.category
@@ -59,12 +57,11 @@ const ReportView = ({ monthRange, year }) => {
   return (
     <div className='report-view'>
       <p>
-        Showing transactions for the months of <strong>{monthRange[0]}</strong>{" "}
-        through <strong>{monthRange[1]}</strong>
+        Showing transactions for the dates of{" "}
+        <strong>{dateRange[0].toLocaleString("en-US")}</strong> through{" "}
+        <strong>{dateRange[1].toLocaleString("en-US")}</strong>
       </p>
-      <p>
-        In the year <strong>{year}</strong>
-      </p>
+
       <ResponsiveContainer width={"100%"} height={"100%"}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray='3 3' />
@@ -72,7 +69,7 @@ const ReportView = ({ monthRange, year }) => {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey='income' fill='#8884d8' />
+          <Bar dataKey='income' fill='#3b9648' />
           <Bar dataKey='expense' fill='#82ca9d' />
         </BarChart>
       </ResponsiveContainer>

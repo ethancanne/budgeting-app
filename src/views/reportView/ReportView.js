@@ -53,17 +53,25 @@ const ReportView = ({ dateRange }) => {
         setData(theData);
       }
     });
-  }, []);
+  }, [dateRange]);
+
+  var dateOptions = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
 
   return (
     <div className='report-view'>
       <p>
         Showing transactions for the dates of{" "}
-        <strong>{dateRange[0].toLocaleString("en-US")}</strong> through{" "}
-        <strong>{dateRange[1].toLocaleString("en-US")}</strong>
+        <strong>{dateRange[0].toLocaleString("en-US", dateOptions)}</strong>{" "}
+        through{" "}
+        <strong>{dateRange[1].toLocaleString("en-US", dateOptions)}</strong>
       </p>
 
-      <ResponsiveContainer width={"100%"} height={"100%"}>
+      <ResponsiveContainer height={"100%"} width={"100%"}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray='3 3' />
           <XAxis dataKey='category' />
@@ -71,10 +79,9 @@ const ReportView = ({ dateRange }) => {
           <Tooltip />
           <Legend />
           <Bar dataKey='income' fill='#3b9648' />
-          <Bar dataKey='expense' fill='#82ca9d' />
+          <Bar dataKey='expense' fill='#bf2a43' />
         </BarChart>
       </ResponsiveContainer>
-      <Button onClick={() => history.back()}>Back</Button>
     </div>
   );
 };

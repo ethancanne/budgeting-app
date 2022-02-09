@@ -5,34 +5,31 @@ import RangeView from "../../views/RangeView/RangeView";
 import ReportView from "../../views/reportView/ReportView";
 
 const Report = () => {
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
-  const updateStartDate = (e)=>{
-    setStartDate(e.target.value)
+  const updateStartDate = e => {
+    setStartDate(e.target.value);
   };
 
-  const updateEndDate = (e)=>{
-    setEndDate(e.target.value)
+  const updateEndDate = e => {
+    setEndDate(e.target.value);
   };
 
   return (
     <Page>
       <div className='report-container'>
         <ReportView
-          dateRange={[
-            new Date(
-              startDate
-            ),
-            new Date(
-              endDate
-            ),
-          ]}
+          dateRange={[new Date(startDate), new Date(endDate)]}
           year={2022}
         />
+        <RangeView
+          startDate={startDate}
+          updateStartDate={updateStartDate}
+          endDate={endDate}
+          updateEndDate={updateEndDate}
+        />
       </div>
-      <div><RangeView startDate={startDate} updateStartDate={updateStartDate} endDate={endDate} updateEndDate={updateEndDate}/></div>
-      <div className='button-container'></div>
     </Page>
   );
 };

@@ -21,7 +21,6 @@ const TransactionHistoryView = props => {
       <table>
         <tbody>
           <tr>
-            <th>UID (For Debugging Only)</th>
             <th>Name</th>
             <th>Date</th>
             <th>Amount</th>
@@ -32,7 +31,6 @@ const TransactionHistoryView = props => {
 
           {user.transactions.map(transaction => (
             <tr>
-              <td>{transaction.UID}</td>
               <td>{transaction.name}</td>
               <td>{transaction.date.toString()}</td>
               <td>${transaction.amount}</td>

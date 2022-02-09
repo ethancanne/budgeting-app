@@ -1,10 +1,4 @@
 // User;
-// transactions;
-// totalIncome;
-// totalExpense;
-// const username;
-
-// generateReport;
 import Transaction from "./Transaction";
 
 class User {
@@ -47,14 +41,6 @@ class User {
   }
 
   removeTransaction(UID) {
-    // for (let i = this.transactions.length; i >= 0; --i) {
-    //   if (this.transactions[i].UID == UID) {
-    //     this.transactions.splice(i, 1);
-    //     return 0;
-    //   }
-    // }
-    // return 1;
-
     this.transactions = this.transactions.filter(
       transaction => transaction.UID !== UID
     );

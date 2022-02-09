@@ -32,7 +32,11 @@ const TransactionHistoryView = props => {
           {user.transactions.map(transaction => (
             <tr>
               <td>{transaction.name}</td>
-              <td>{transaction.date.toString()}</td>
+              <td>{
+                ((transaction.date.getMonth() > 8) ? (transaction.date.getMonth() + 1) : ('0' + (transaction.date.getMonth() + 1))) + '/' +
+                ((transaction.date.getDate() > 9) ? transaction.date.getDate() : ('0' + transaction.date.getDate())) + '/' +
+                transaction.date.getFullYear()}
+              </td>
               <td>${transaction.amount}</td>
               <td>{transaction.category}</td>
               <td>{transaction.isExpense ? "Expense" : "Income"}</td>

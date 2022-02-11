@@ -2,8 +2,7 @@
   "name": "Budgeting-App",
   "version": "1.0.0",
   "description": "",
-  "homepage": "http://ethancanne.github.io/budgeting-app",
-
+  "homepage": "https://ethancanne.github.io/budgeting-app",
   "scripts": {
     "build": "webpack --mode production",
     "start": "node server.js",

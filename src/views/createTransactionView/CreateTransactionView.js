@@ -113,7 +113,7 @@ const CreateTransactionView = props => {
           </select>
         </label>
         <div className='buttonWrapper'>
-          <Button>Click</Button>
+          <Button>Submit</Button>
         </div>
       </form>
     </div>

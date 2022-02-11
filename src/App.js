@@ -1,7 +1,7 @@
 import "./App.scss";
 import React, { useState, useEffect } from "react";
 import "regenerator-runtime/runtime.js";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import { Route, HashRouter as Router, Switch } from "react-router-dom";
 
 //Import Pages
 import Dashboard from "./pages/dashboard/Dashboard";

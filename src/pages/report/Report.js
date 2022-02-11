@@ -5,8 +5,8 @@ import RangeView from "../../views/RangeView/RangeView";
 import ReportView from "../../views/reportView/ReportView";
 
 const Report = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const updateStartDate = e => {
     setStartDate(e.target.value);
@@ -20,7 +20,10 @@ const Report = () => {
     <Page>
       <div className='report-container'>
         <ReportView
-          dateRange={[new Date(startDate), new Date(endDate)]}
+          dateRange={[
+            new Date(startDate.replace(/-/g, "/")),
+            new Date(endDate.replace(/-/g, "/")),
+          ]}
           year={2022}
         />
         <RangeView

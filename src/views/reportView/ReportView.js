@@ -23,7 +23,7 @@ const ReportView = ({ dateRange }) => {
 
   useEffect(() => {
     var theData = [];
-    console.log(transactions);
+    console.log(dateRange);
 
     transactions.forEach(transaction => {
       if (
